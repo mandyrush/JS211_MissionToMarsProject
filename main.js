@@ -10,8 +10,64 @@ const jobTypes = {
 };
 
 // Your code will go here
+class CrewMember {
+  name;
+  job;
+  specialSkill;
+  ship;
+  constructor (iName, iJob, iSpecialSkill) {
+    this.name = iName;
+    this.job = iJob;
+    this.specialSkill = iSpecialSkill;
+    this.ship = null;
+  } 
 
+  enterShip (ship) {
+    this.ship = ship;
+    this.ship.crew.push(this);
+  }
+}
 
+class Ship {
+  name;
+  type; 
+  ability;
+  crew;
+  constructor (iName, iType, iAbility) {
+    this.name = iName;
+    this.type = iType;
+    this.ability = iAbility;
+    this.crew = [];
+  }
+
+  canFly () {
+    // Loop over the crew members
+    // See if any of them have the correct job for this ship
+    let foundCrew = this.crew.findIndex(crewMember => { 
+      return jobTypes[crewMember['job']] === this.type || jobTypes[crewMember['job']] === 'programmer';
+    })
+    return foundCrew;
+  }
+
+  missionStatement () {
+    if (this.canFly() !== -1) {
+      return this.missionStatement = this.ability;
+    } else {
+      return this.missionStatement = 'Can\'t perform a mission yet.'
+    }
+  }
+}
+
+// let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+// const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+// let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
+// const crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
+
+// crewMember1.enterShip(mav);
+// console.log('MAV mission statement: ', mav.missionStatement());
+
+// crewMember2.enterShip(hermes);
+// console.log('Hermes mission statement: ', hermes.missionStatement());
 
 
 
