@@ -10,6 +10,7 @@ const jobTypes = {
 };
 
 // Your code will go here
+// The crew member has a name, job, special skill and is assigned to a ship. 
 class CrewMember {
   name;
   job;
@@ -23,23 +24,25 @@ class CrewMember {
   } 
 
   updateOldShipsCrew () {
+    // If the crew member is already assigned to a ship, find them in that crew list and remove them.
     let crewIndex = this.ship.crew.indexOf(this);
     this.ship.crew.splice(crewIndex, 1);
   }
 
   enterShip (newship) {
-    // Set the ship that the crew member is assigned to
-    // Add this crew member to the ship's crew list
-    // If this crewmember already is assigned to a ship, remove them from that crew.
+    // Check to see if the crew member is already assigned to a ship.
     if(this.ship) {
       this.updateOldShipsCrew()
     }
 
+    // Set the new ship that the crew member is assigned to
+    // Add this crew member to the new ship's crew list
     this.ship = newship;
     this.ship.crew.push(this);
   }
 }
 
+// The ship has a name, type, ability and list of crew members. 
 class Ship {
   name;
   type; 
