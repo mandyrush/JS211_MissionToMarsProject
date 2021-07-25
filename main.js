@@ -59,17 +59,18 @@ class Ship {
     // Look through the ship's crew members
     // Compare the value of the current crew member's job in the jobTypes list (value is equal to ship type) to 
     // this ships ship type. If they are the same or the crew member's job is a programmer then the ship can fly.
+    // Otherwise the mission can't be performed yet.
     let foundCrew = this.crew.findIndex(crewMember => { 
       return jobTypes[crewMember['job']] === this.type || crewMember['job'] === 'programmer';
     })
-    return foundCrew;
+    return foundCrew !== -1;
   }
 
   missionStatement () {
-    if (this.canFly() === -1) {
-      return this.missionStatement = 'Can\'t perform a mission yet.'
+    if (this.canFly()) {
+      return this.missionStatement = this.ability;  
     } 
-    return this.missionStatement = this.ability;
+    return this.missionStatement = 'Can\'t perform a mission yet.'
   }
 }
 
