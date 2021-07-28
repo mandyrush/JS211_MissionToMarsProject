@@ -76,23 +76,6 @@ class Ship {
 }
 
 
-// Debugging
-// let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-// const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
-
-// let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
-// const crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
-
-// console.log('MAV mission statement1: ', mav.missionStatement());
-// console.log('Hermes mission statement1: ', hermes.missionStatement());
-
-// crewMember1.enterShip(mav);
-// console.log('MAV mission statement: ', mav.missionStatement());
-
-// crewMember2.enterShip(hermes);
-// console.log('Hermes mission statement: ', hermes.missionStatement());
-
-
 
 // Begin by reading the tests and building a function that will full each one.
 // As you build, you might not have to build them in order, maybe you do...
