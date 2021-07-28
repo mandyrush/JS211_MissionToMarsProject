@@ -31,8 +31,9 @@ class CrewMember {
 
   enterShip (newship) {
     // Check to see if the crew member is already assigned to a ship.
+    // @todo compare this.ship to new ship
     if(this.ship) {
-      this.updateOldShipsCrew()
+      this.updateOldShipsCrew();
     }
 
     // Set the new ship that the crew member is assigned to
@@ -68,9 +69,9 @@ class Ship {
 
   missionStatement () {
     if (this.canFly()) {
-      return this.missionStatement = this.ability;  
+      return this.ability;
     } 
-    return this.missionStatement = 'Can\'t perform a mission yet.'
+    return "Can't perform a mission yet."
   }
 }
 
@@ -140,37 +141,13 @@ if (typeof describe === 'function'){
       assert.equal(mav.crew.length, 0);
     });
 
-    // Original Test
-    // it('can return a mission statement correctly', function(){
-    //   let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-    //   const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
-    //   let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
-    //   const crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
-    //   assert.equal(mav.missionStatement(), "Can't perform a mission yet.");
-    //   assert.equal(hermes.missionStatement(), "Can't perform a mission yet.");
-
-    //   crewMember1.enterShip(mav);
-    //   assert.equal(mav.missionStatement(), "Ascend into low orbit");
-
-    //   crewMember2.enterShip(hermes);
-    //   assert.equal(hermes.missionStatement(), "Interplanetary Space Travel");
-    // });
-
-    // New Tests
-    it('can return a mission statement correctly if the ship can\'t fly', function(){
+    it('can return a mission statement correctly', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
       const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
       let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
       const crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
       assert.equal(mav.missionStatement(), "Can't perform a mission yet.");
       assert.equal(hermes.missionStatement(), "Can't perform a mission yet.");
-    });
-
-    it('can return a mission statement correctly if the ship can fly', function(){
-      let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-      const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
-      let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
-      const crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
 
       crewMember1.enterShip(mav);
       assert.equal(mav.missionStatement(), "Ascend into low orbit");
